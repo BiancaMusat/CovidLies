@@ -48,7 +48,8 @@ def main():
     parser.add_argument('--k', type=int, default=5)
     args = parser.parse_args()
 
-    detector = BertScoreDetector('covid-roberta/checkpoint-84500', score_type=args.score_type)
+    # detector = BertScoreDetector('covid-roberta/checkpoint-84500', score_type=args.score_type)
+    detector = BertScoreDetector('digitalepidemiologylab/covid-twitter-bert', score_type=args.score_type)
     detector.eval()
     detector.cuda()
 
