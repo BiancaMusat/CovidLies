@@ -133,7 +133,7 @@ class BertScoreDetector(Detector, torch.nn.Module):
         )
         model_input = {k: v.to(device) for k, v in model_input.items()}
         mask = model_input['attention_mask']
-        embeddings, *_ = self._model(**model_input)
+        embeddings = self._model(**model_input)[0]
         return MaskedEmbeddings(embeddings, mask)
 
     def _score(self,
