@@ -32,7 +32,10 @@ def generate_sentences(fname,
     with open(fname, 'r') as f:
         batch = []
         for line in f:
-            obj = json.loads(line)
+            try:
+                obj = json.loads(line)
+            except:
+                continue
             batch.append(obj[field])
             if len(batch) == batch_size:
                 yield batch
