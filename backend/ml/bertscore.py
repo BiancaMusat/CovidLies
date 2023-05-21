@@ -146,6 +146,6 @@ class BertScoreDetector(Detector, torch.nn.Module):
 
     def _predict(self, scores: np.ndarray) -> List[List[int]]:
         # TODO: @rloganiv - Something smarter thank just returning top-5.
-        k = 5
+        k = 100
         topk = scores.argsort(axis=-1)[:, :-(k+1):-1]
         return topk.tolist()
